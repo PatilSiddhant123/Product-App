@@ -1,0 +1,60 @@
+<div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Alert !</strong> Your Data has been Deleted Successfully.
+  <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="addProduct()" >
+    Add Product
+  </button>
+  
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>ProductId</th>
+        <th>Product Name</th>
+        <th>Picture</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of productList">
+        <td>
+          {{d.id}}
+        </td>
+        <td>
+          {{d.productName}}
+        </td>
+        <td>
+            <div class="d-flex align-items-center">
+              <img
+                  style="width: 105px; height: 55px"
+                  src="{{d.photo}}">
+                  
+ 
+            </div>
+          </td>
+        <td>
+          {{d.quentity}}
+        </td>
+        <td>{{d.price}}</td>
+        <td>
+          <button mat-raised-button type="button" class="btn btn-link-active btn-sm btn-success" (click)="editProduct(d)">
+            Edit
+          </button>&nbsp;
+          <button mat-raised-button type="button" class="btn btn-link-active btn-sm btn-primary" (click)="shopProduct(d)">
+            View
+          </button>&nbsp;
+          <button mat-raised-button type="button" class="btn btn-link-active btn-sm btn-danger"   (click)="deleteProduct(d.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  
